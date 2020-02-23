@@ -16,4 +16,4 @@ jobs:
     - name: Install dpkg tools
       run: sudo apt-get install dpkg-dev debhelper javahelper
     - name: Build with Ant
-      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=6624 rebuild deb
+      run: count_commits=$(git rev-list Jitsi-2.10.. --count) && ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((count_commits + 5236)) rebuild deb
