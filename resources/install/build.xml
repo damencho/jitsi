@@ -2141,7 +2141,7 @@
         </antcall>
     </target>
     
-    <target name="deb" depends="deb-32,deb-64"/>
+    <target name="deb" depends="deb-64"/>
 
     <!-- Outputs a warning notifying the user that dpkg-scanpackages is not installed. -->
     <target name="dpkg-scan-warning" unless="dpkg.scan.present">
