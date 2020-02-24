@@ -5,6 +5,7 @@ on: [push]
 jobs:
   job-set-version-release:
     name: Sets version and creates release
+    runs-on: ubuntu-latest
     steps:
     - name: Set Version
       run: echo ::set-env name=VERSION::$((GITHUB_RUN_NUMBER + 5624))
@@ -21,6 +22,7 @@ jobs:
   job-debian-build:
     name: Debian Build
     runs-on: ubuntu-18.04
+    needs: job-set-version-release
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
