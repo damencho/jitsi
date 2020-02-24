@@ -109,8 +109,8 @@ jobs:
         run: |
           wget http://informagen.com/JarBundler/dist/jarbundler.zip
           unzip jarbundler.zip
-          mkdir -p .ant/lib
-          cp jarbundler-2.3.1/jarbundler-2.3.1.jar .ant/lib
+          mkdir -p ~/.ant/lib
+          cp jarbundler-2.3.1/jarbundler-2.3.1.jar ~/.ant/lib
       - name: Build with Ant
         run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel="$VERSION" -Dsparkle="$VERSION" -Dpackage.name="jitsi" -Dlink.updates.macosx="https://download.jitsi.org/jitsi/macosx/sparkle/updates.xml" -Dlink.download.macosx="https://download.jitsi.org/jitsi/nightly/macosx/jitsi-2.11.$VERSION.dmg" -Dlink.sparkle.updates.index="https://download.jitsi.org/jitsi/nightly/macosx/sparkle/index.html" -Dgoogle.api.client.id="${{ secrets.GOOGLE_API_CLIENT_ID }}" -Dgoogle.api.client.secret="${{ secrets.GOOGLE_API_CLIENT_SECRET }}" clean make dmg
       - shell: bash
