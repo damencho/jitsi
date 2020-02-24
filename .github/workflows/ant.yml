@@ -19,7 +19,8 @@ jobs:
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$VERSION rebuild deb
     - name: Test output
-      run: ls -l release/debian
+      run: echo $VERSION
+#      run: ls -l release/debian
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
