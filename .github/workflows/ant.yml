@@ -37,8 +37,8 @@ jobs:
         path: upload-url.txt
     - shell: bash
       run: |
-        cat version/version.txt
-        cat upload-url/upload-url.txt
+        cat version.txt
+        cat upload-url.txt
   job-debian-build:
     name: Debian Build
     runs-on: ubuntu-18.04
