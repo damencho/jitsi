@@ -20,3 +20,23 @@ jobs:
       run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((GITHUB_RUN_NUMBER + VERSION_OFFSET)) rebuild deb
     - name: Test output
       run: ls -l release/debian
+    - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: $((GITHUB_RUN_NUMBER + VERSION_OFFSET))
+          draft: false
+          prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+        asset_path: ./release/debian/jitsi_2.11.$((GITHUB_RUN_NUMBER + VERSION_OFFSET))-1_amd64.deb
+        asset_name: jitsi_2.11.$((GITHUB_RUN_NUMBER + VERSION_OFFSET))-1_amd64.deb
+        asset_content_type: application/octet-stream
