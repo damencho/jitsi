@@ -16,6 +16,4 @@ jobs:
     - name: Install dpkg tools
       run: sudo apt-get install dpkg-dev debhelper javahelper
     - name: Build with Ant
-      run: ver=$(git describe --match "Jitsi-[0-9\.]*" --long) && echo ${ver}
-#    - name: Build with Ant
-#      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((setvarStep.myOutputVar + 5236)) rebuild deb
+      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$GITHUB_RUN_NUMBER rebuild deb
