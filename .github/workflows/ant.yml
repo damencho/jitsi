@@ -18,3 +18,5 @@ jobs:
       run: sudo apt-get install dpkg-dev debhelper javahelper
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((GITHUB_RUN_NUMBER + VERSION_OFFSET)) rebuild deb
+    - name: Test output
+      run: ls -l release/debian
