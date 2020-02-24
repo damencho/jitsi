@@ -6,7 +6,7 @@ jobs:
   job-debian-build:
     name: Debian Build
     env:
-      VERSION: $((GITHUB_RUN_NUMBER + 5624))
+      VERSION: ${{github.run_number + 5624}}
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
