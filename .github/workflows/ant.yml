@@ -19,7 +19,7 @@ jobs:
       name: setvarStep
     - script: echo "##vso[task.setvariable variable=ver;isOutput=true]$(git describe --match "Jitsi-[0-9\.]*" --long)"
       name: setvarStep
-#    - name: Build with Ant
-#      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((setvarStep.myOutputVar + 5236)) rebuild deb
     - name: Build with Ant
       run: echo $((setvarStep.myOutputVar + 5236))
+#    - name: Build with Ant
+#      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((setvarStep.myOutputVar + 5236)) rebuild deb
