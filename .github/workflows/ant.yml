@@ -35,7 +35,8 @@ jobs:
       with:
         name: upload-url
         path: upload-url.txt
-    - shell: bash
+    - name: Print uploaded data
+      shell: bash
       run: |
         cat version.txt
         cat upload-url.txt
