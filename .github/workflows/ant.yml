@@ -21,3 +21,5 @@ jobs:
       name: setvarStep
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((setvarStep.myOutputVar + 5236)) rebuild deb
+    - name: Build with Ant
+      run: echo $((setvarStep.myOutputVar + 5236))
