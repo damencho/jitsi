@@ -3,7 +3,7 @@ name: Build Jitsi Desktop
 on: [push]
 
 jobs:
-  job-set-version-release:
+  job-release-ver:
     name: Sets version and creates release
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,9 @@ jobs:
   job-debian-build:
     name: Debian Build
     runs-on: ubuntu-18.04
-    needs: job-set-version-release
+    needs: job-release-ver
+    env:
+      VERSION: ${{ jobs.job-release-ver.env.VERSION }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
