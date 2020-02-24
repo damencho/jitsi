@@ -15,5 +15,9 @@ jobs:
         java-version: 1.8
     - name: Install dpkg tools
       run: sudo apt-get install dpkg-dev debhelper javahelper
-    - name: Build with Ant
-      run: count_commits=$(git rev-list Jitsi-2.10..HEAD --count) && ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((count_commits + 5236)) rebuild deb
+    - script: echo "##vso[task.setvariable variable=countcommits;isOutput=true]$(git rev-list Jitsi-2.10..HEAD --count)"
+      name: setvarStep
+    - script: echo "##vso[task.setvariable variable=ver;isOutput=true]$(git describe --match "Jitsi-[0-9\.]*" --long)"
+      name: setvarStep
+#    - name: Build with Ant
+#      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((setvarStep.myOutputVar + 5236)) rebuild deb
