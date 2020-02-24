@@ -31,10 +31,10 @@ jobs:
       shell: bash
       run: echo ${{ steps.create_release.outputs.upload_url }} > upload-url.txt
     - name: Upload upload_url result
-        uses: actions/upload-artifact@v1
-        with:
-          name: upload-url
-          path: upload-url.txt
+      uses: actions/upload-artifact@v1
+      with:
+        name: upload-url
+        path: upload-url.txt
   job-debian-build:
     name: Debian Build
     runs-on: ubuntu-18.04
