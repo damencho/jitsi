@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   job-set-version-release:
-    name: Debian Build
+    name: Sets version and creates release
     steps:
     - name: Set Version
       run: echo ::set-env name=VERSION::$((GITHUB_RUN_NUMBER + 5624))
