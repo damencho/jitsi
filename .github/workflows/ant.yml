@@ -16,4 +16,4 @@ jobs:
     - name: Install dpkg tools
       run: sudo apt-get install dpkg-dev debhelper javahelper
     - name: Build with Ant
-      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$GITHUB_RUN_NUMBER rebuild deb
+      run: ant -noinput -buildfile build.xml -Dsplashscreen.enable=true -Dlabel=$((GITHUB_RUN_NUMBER + 5624)) rebuild deb
